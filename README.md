@@ -57,6 +57,7 @@ interface SyllableOptions {
   syllable?: "초성" | "중성" | "종성" | "모두";
   toSeparateArray?: boolean;
   includeOtherLng?: boolean;
+  removeSpace?: boolean;
 }
 ```
 ### 초성만 가져오기
