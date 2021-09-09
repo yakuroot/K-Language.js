@@ -16,7 +16,7 @@ import klng from "K-Language.js";
 |---	|---	|---	|---	|
 | str 	| string 	| `-` 	| 가장 마지막 글자를 기준으로 조사를 반환하게 됩니다. 	|
 | postposition 	| JosaTypes 	| `-` 	| 이 매개변수를 기준으로 조사를 반환합니다.  	|
-| option 	| Object 	| `true` 	| { preserve: boolean } 과 같이 사용 가능합니다.<br>preserve를 true로 해 놓은 경우, 위 `str`에 넘겨준 글자를 조사와 함께 반환합니다.<br>기본값은 `false`입니다. 	|
+| option 	| { preserve?: boolean } 	| `true` 	| preserve를 true로 해 놓은 경우, 위 `str`에 넘겨준 글자를 조사와 함께 반환합니다.<br>기본값은 `false`입니다. 	|
 ```ts
 type JosaTypes = "와/과" | "을/를" | "이/가" | "으/로" | "은/는" | "아/야" | "이나" | "이란" | "이든가" | "이든지" | "이나마" | "이네";
 ```
@@ -35,7 +35,7 @@ console.log(test) // "스마트폰을"
 | 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
 |---	|---	|---	|---	|
 | str 	| string 	| `-` 	| 매개변수로 주어진 글자를 기준으로 종성이 있는지 없는지 판단합니다. 	|
-| option 	| { toArray?: boolean } 	| `true` 	| { toArray: boolean } 과 같이 사용 가능합니다.<br>toArray를 true로 해 놓은 경우, 위 `str`에 넘겨준 모든 글자의 종성 여부를 판별하여 boolean[]으로 반환합니다.<br>기본 값은 `false`입니다. 	|
+| option 	| { toArray?: boolean } 	| `true` 	| toArray를 true로 해 놓은 경우, 위 `str`에 넘겨준 모든 글자의 종성 여부를 판별하여 boolean[]으로 반환합니다.<br>기본 값은 `false`입니다. 	|
 ### 마지막 글자의 종성 여부 판별하기
 ```js
 let test = hasJongSeong("배고파");
@@ -57,7 +57,8 @@ interface SyllableOptions {
   syllable?: "초성" | "중성" | "종성" | "모두";
   toSeparateArray?: boolean;
   includeOtherLng?: boolean;
-}```
+}
+```
 ### 초성만 가져오기
 ```js
 let test = getSyllable("집가고싶다", { syllable: "초성", toSeparateArray: true });
