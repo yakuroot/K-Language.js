@@ -1,0 +1,8 @@
+{
+  "name": "K-Language.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Neoration/K-Language.js.git",
+  "author": "Neo <65282986+Neoration@users.noreply.github.com>",
+  "license": "MIT"
+}
