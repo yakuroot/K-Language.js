@@ -15,8 +15,11 @@ import klng from "K-Language.js";
 | 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
 |---	|---	|---	|---	|
 | str 	| string 	| `-` 	| 가장 마지막 글자를 기준으로 조사를 반환하게 됩니다. 	|
-| postposition 	| string 	| `-` 	| 이 매개변수를 기준으로 조사를 반환합니다. 여기에 쓰일 수 있는 값은 아래와 같습니다.<br>"와/과", "을/를", "이/가", "으/로", "은/는", "아/야", "이나", "이란", "이든가", "이든지", "이나마", "이네" 	|
+| postposition 	| JosaTypes 	| `-` 	| 이 매개변수를 기준으로 조사를 반환합니다.  	|
 | option 	| Object 	| `true` 	| { preserve: boolean } 과 같이 사용 가능합니다.<br>preserve를 true로 해 놓은 경우, 위 `str`에 넘겨준 글자를 조사와 함께 반환합니다.<br>기본값은 `false`입니다. 	|
+```ts
+type JosaTypes = "와/과" | "을/를" | "이/가" | "으/로" | "은/는" | "아/야" | "이나" | "이란" | "이든가" | "이든지" | "이나마" | "이네";
+```
 ### 조사만 반환하기
 ```js
 let test = josa("스마트폰", "을/를");
@@ -32,7 +35,7 @@ console.log(test) // "스마트폰을"
 | 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
 |---	|---	|---	|---	|
 | str 	| string 	| `-` 	| 매개변수로 주어진 글자를 기준으로 종성이 있는지 없는지 판단합니다. 	|
-| option 	| Object 	| `true` 	| { toArray: boolean } 과 같이 사용 가능합니다.<br>toArray를 true로 해 놓은 경우, 위 `str`에 넘겨준 모든 글자의 종성 여부를 판별하여 boolean[]으로 반환합니다.<br>기본 값은 `false`입니다. 	|
+| option 	| { toArray?: boolean } 	| `true` 	| { toArray: boolean } 과 같이 사용 가능합니다.<br>toArray를 true로 해 놓은 경우, 위 `str`에 넘겨준 모든 글자의 종성 여부를 판별하여 boolean[]으로 반환합니다.<br>기본 값은 `false`입니다. 	|
 ### 마지막 글자의 종성 여부 판별하기
 ```js
 let test = hasJongSeong("배고파");
@@ -48,7 +51,13 @@ console.log(test); // [false, false, true, false, false, true]
 | 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
 |---	|---	|---	|---	|
 | str 	| string 	| `-` 	| 기준이 될 글자를 넣어줍니다. 	|
-| option 	| {<br> syllable?: "초성" \| "중성" \| "종성" \| "모두",<br> toSeparateArray?: boolean,<br> includeOtherLng?: boolean,<br> removeSpace?: boolean,<br>} 	| `true` 	| 기본 값은 각각 `"모두"`, `false`, `false`, `false` 입니다.<br>syllable에서 `"초성"`을 택하는 경우 `str`에서 초성만을, `"중성"`을 택하는 경우 중성만을, `"종성"`을 택하는 경우 종성만을 분리하여 반환합니다. `"모두"`를 택하는 경우는 각 글자의 초・중・종성을 분리하여 반환합니다.<br>toSeparateArray에서 `true`를 택하는 경우 모든 글자를 하나의 배열로 반환합니다.<br>includeOtherLng에서 `true`를 택하는 경우 한글이 아닌 글자도 반환합니다.<br>removeSpace에서 `true`를 택하는 경우 글자의 모든 공백을 제거한 뒤 값을 반환합니다. 	|
+| option 	| SyllableOptions 	| `true` 	| 기본 값은 각각 `"모두"`, `false`, `false`, `false` 입니다.<br>syllable에서 `"초성"`을 택하는 경우 `str`에서 초성만을, `"중성"`을 택하는 경우 중성만을, `"종성"`을 택하는 경우 종성만을 분리하여 반환합니다. `"모두"`를 택하는 경우는 각 글자의 초・중・종성을 분리하여 반환합니다.<br>toSeparateArray에서 `true`를 택하는 경우 모든 글자를 하나의 배열로 반환합니다.<br>includeOtherLng에서 `true`를 택하는 경우 한글이 아닌 글자도 반환합니다.<br>removeSpace에서 `true`를 택하는 경우 글자의 모든 공백을 제거한 뒤 값을 반환합니다. 	|
+```ts
+interface SyllableOptions {
+  syllable?: "초성" | "중성" | "종성" | "모두";
+  toSeparateArray?: boolean;
+  includeOtherLng?: boolean;
+}```
 ### 초성만 가져오기
 ```js
 let test = getSyllable("집가고싶다", { syllable: "초성", toSeparateArray: true });
