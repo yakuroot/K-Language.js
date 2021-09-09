@@ -4,7 +4,7 @@
   
 자바스크립트에서 사용하기
 ```js
-const klng = require("K-Language.js);
+const klng = require("K-Language.js");
 ```
 타입스크립트에서 사용하기 (d.ts 파일은 아직 작업 중에 있습니다)
 ```ts
@@ -54,7 +54,7 @@ console.log(test2); // false
 let test3 = isHangul("나는Jane");
 console.log(test2); // false
 ```
-아무런 옵션을 주지 않으면, 매개변수로 넘겨준 __글자 전체가 한글인지 판별__하여 값을 반환합니다.  
+아무런 옵션을 주지 않으면, 매개변수로 넘겨준 **글자 전체가aaaa 한글인지 판별**하여 값을 반환합니다.  
 공백 또한 한글이 아니기에 `false`를 반환합니다.
 ### 공백을 제거하고 한글인지 판별하기
 ```js
