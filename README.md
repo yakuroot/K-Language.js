@@ -31,11 +31,56 @@ let test = josa("스마트폰", "을/를", { preserve: true });
 console.log(test) // "스마트폰을"
 ```
 ---
+## isHangul
+| 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
+|---	|---	|---	|---	|
+| str 	| string 	| `-` 	| 기준이 될 글자를 넣어줍니다. 	|
+| option 	| HangulOptions 	| `true` 	| 기본 값은 모두 `false`입니다.<br>`percent`에서 `true`를 택하는 경우 해당 글자 중 한글이 존재하는 퍼센트를, `toArray`에서 `true`를 택하는 경우 각 글자의 한글 여부를 판별하여 boolean[]으로 반환합니다.<br>removeSpace에서 `true`를 택하는 경우 글자의 모든 공백을 제거한 뒤 값을 반환합니다. 	|
+```ts
+interface HangulOptions {
+  percent?: boolean;
+  toArray?: boolean;
+  removeSpace?: boolean;
+}
+```
+### 글자가 모두 한글인지 판별하기
+```js
+let test1 = isHangul("세종대왕");
+console.log(test1); // true
+
+let test2 = isHangul("나는 철수");
+console.log(test2); // false
+
+let test3 = isHangul("나는Jane");
+console.log(test2); // false
+```
+아무런 옵션을 주지 않으면, 매개변수로 넘겨준 __글자 전체가 한글인지 판별__하여 값을 반환합니다.  
+공백 또한 한글이 아니기에 `false`를 반환합니다.
+### 공백을 제거하고 한글인지 판별하기
+```js
+let test = isHangul("나는 철수", { removeSpace: true });
+console.log(test); // true
+```
+`removeSpace`를 `true`로 설정하면 모든 공백을 제거한 뒤 판별한 값을 반환합니다.
+### 글자 중 한글인 글자의 비율 알아내기
+```js
+let test = isHangul("나는 Jane이라고 해.", { percent: true });
+console.log(test); // 46.15384615384615
+```
+`percent`를 `true`로 설정하면 매개변수로 넘겨준 글자 중 한글인 글자의 비율을 반환합니다. `removeSpace`와 동시에 사용할 수 있습니다.
+### 각 글자의 한글 여부 판별하기
+```js
+let test = isHangul("abc가나다", { toArray: true });
+console.log(test); // [false, false, false, true, true, true]
+```
+`toArray`를 `true`로 설정하면 매개변수로 넘겨준 글자 모두를 판별하여 배열로 반환합니다. `removeSpace`와 동시에 사용할 수 있습니다.  
+
+---
 ## hasJongSeong
 | 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
 |---	|---	|---	|---	|
 | str 	| string 	| `-` 	| 매개변수로 주어진 글자를 기준으로 종성이 있는지 없는지 판단합니다. 	|
-| option 	| { toArray?: boolean } 	| `true` 	| toArray를 true로 해 놓은 경우, 위 `str`에 넘겨준 모든 글자의 종성 여부를 판별하여 boolean[]으로 반환합니다.<br>기본 값은 `false`입니다. 	|
+| option 	| { toArray?: boolean } 	| `true` 	| `toArray`에서 `true`를 택하는 경우, 위 `str`에 넘겨준 모든 글자의 종성 여부를 판별하여 boolean[]으로 반환합니다.<br>기본 값은 `false`입니다. 	|
 ### 마지막 글자의 종성 여부 판별하기
 ```js
 let test = hasJongSeong("배고파");
@@ -46,6 +91,7 @@ console.log(test); // false
 let test = hasJongSeong("피자먹어야징", { toArray: true });
 console.log(test); // [false, false, true, false, false, true]
 ```
+
 ---
 ## getSyllable
 | 매개변수 명 	| 타입 	| 옵션 	| 설명 	|
