@@ -12,6 +12,12 @@ module.exports = {
   },
 
   getSyllable: function(str, option) {
+    if (
+      option !== undefined &&
+      option.removeSpace
+    )
+      str = str.replace(/(\s*)/g, "");
+
     var result = [];
   
     var cho = [
