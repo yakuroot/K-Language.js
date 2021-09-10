@@ -9,6 +9,7 @@ const {
   isHangul,
   isCombined,
 } = require("./src/hangul");
+const { getKoreanNumber } = require("./src/number");
 
 module.exports = {
   josa,
@@ -18,4 +19,5 @@ module.exports = {
   isJongAble,
   isHangul,
   isCombined,
+  getKoreanNumber,
 };
