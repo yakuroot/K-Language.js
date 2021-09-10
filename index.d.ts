@@ -26,6 +26,7 @@ declare interface GetSyllable {
 }
 
 export interface HangulOptions {
+  onlyCombined?: boolean;
   removeSpace?: boolean;
 }
 
@@ -33,12 +34,6 @@ declare interface IsHangul {
   isHangul: (str: string, option?: HangulOptions) => boolean;
   isHangul: (str: string, option?: HangulOptions & { percent: true }) => number;
   isHangul: (str: string, option?: HangulOptions & { toArray: true }) => boolean[];
-}
-
-declare interface IsCombined {
-  isCombined: (str: string, option?: HangulOptions) => boolean;
-  isCombined: (str: string, option?: HangulOptions & { percent: true }) => number;
-  isCombined: (str: string, option?: HangulOptions & { toArray: true }) => boolean[];
 }
 
 declare interface IsChoAble {
@@ -68,8 +63,9 @@ declare const getSyllable: GetSyllable;
 declare const isChoAble: IsChoAble;
 declare const isJongAble: IsJongAble;
 declare const isHangul: IsHangul;
-declare const isCombined: IsCombined;
 declare const getKoreanNumber: GetKoreanNumber;
+declare const search: (str: string, criteria: string) => boolean;
+declare const searchIndex: (str: string, criteria: string) => number[][];
 
 export default {
   josa,
@@ -78,6 +74,7 @@ export default {
   isChoAble,
   isJongAble,
   isHangul,
-  isCombined,
+  search,
+  searchIndex,
   getKoreanNumber,
 };
