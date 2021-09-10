@@ -7,7 +7,8 @@ const {
 } = require("./src/syllable");
 const {
   isHangul,
-  isCombined,
+  search,
+  searchIndex,
 } = require("./src/hangul");
 const { getKoreanNumber } = require("./src/number");
 
@@ -18,6 +19,7 @@ module.exports = {
   isChoAble,
   isJongAble,
   isHangul,
-  isCombined,
+  search,
+  searchIndex,
   getKoreanNumber,
 };
