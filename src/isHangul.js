@@ -1,5 +1,5 @@
 module.exports = {
-  isHangle: function (str, option) {
+  isHangul: function (str, option) {
     if (
       option !== undefined &&
       option.removeSpace

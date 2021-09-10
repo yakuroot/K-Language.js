@@ -3,11 +3,11 @@ const {
   hasJongSeong,
   getSyllable,
 } = require("./src/syllable");
-const { isHangle } = require("./src/isHangul");
+const { isHangul } = require("./src/isHangul");
 
 module.exports = {
   josa,
   hasJongSeong,
   getSyllable,
-  isHangle,
+  isHangul,
 };
