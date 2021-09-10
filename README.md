@@ -40,6 +40,7 @@ console.log(test) // "스마트폰을"
 interface HangulOptions {
   percent?: boolean;
   toArray?: boolean;
+  onlyCombined?: boolean;
   removeSpace?: boolean;
 }
 ```
@@ -54,7 +55,7 @@ console.log(test2); // false
 let test3 = isHangul("나는Jane");
 console.log(test2); // false
 ```
-아무런 옵션을 주지 않으면, 매개변수로 넘겨준 **글자 전체가aaaa 한글인지 판별**하여 값을 반환합니다.  
+아무런 옵션을 주지 않으면, 매개변수로 넘겨준 **글자 전체가 한글인지 판별** 하여 값을 반환합니다.  
 공백 또한 한글이 아니기에 `false`를 반환합니다.
 ### 공백을 제거하고 한글인지 판별하기
 ```js
@@ -74,6 +75,15 @@ let test = isHangul("abc가나다", { toArray: true });
 console.log(test); // [false, false, false, true, true, true]
 ```
 `toArray`를 `true`로 설정하면 매개변수로 넘겨준 글자 모두를 판별하여 배열로 반환합니다. `removeSpace`와 동시에 사용할 수 있습니다.  
+### 조합된 한글만 판별하기
+```js
+let test1 = isHangul("ㄱㄴㄷ");
+console.log(test1); // true
+
+let test2 = isHangul("ㄱㄴㄷ", { onlyCombined: true });
+console.log(test2); // false
+```
+`onlyCombined`를 `true`로 설정하면 완전히 조합된 한글(가-힣)만을 판별하여 값을 반환합니다. 위 옵션들과 동시에 사용할 수 있습니다.  
 
 ---
 ## hasJongSeong
