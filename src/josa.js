@@ -1,7 +1,7 @@
 const { hasJongSeong } = require("./syllable");
 
 module.exports = {
-  josa: function (str, postposition, option) {
+  josa: function (str, postposition, options) {
     var replacedPostposition = postposition
       .replace("/", "")
       .replace(",", "");
@@ -52,14 +52,14 @@ module.exports = {
   
     return hasJongSeong(str)
       ? (
-        option !== undefined &&
-        option.preserve
+        options !== undefined &&
+        options.preserve
       )
         ? `${str}${postpositionOption.second}`
         : postpositionOption.second
       : (
-        option !== undefined &&
-        option.preserve
+        options !== undefined &&
+        options.preserve
       )
         ? `${str}${postpositionOption.first}`
         : postpositionOption.first;

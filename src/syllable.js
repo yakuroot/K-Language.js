@@ -6,10 +6,10 @@ var {
 } = require("./hangul");
 
 module.exports = {
-  hasJongSeong: function(str, option) {
+  hasJongSeong: function(str, options) {
     if (
-      option !== undefined &&
-      option.toArray
+      options !== undefined &&
+      options.toArray
     )
       return str.split("").map(function(s) {
         return (s.charCodeAt(0) - 0xAC00) % 28 > 0;
@@ -18,10 +18,10 @@ module.exports = {
     return (str.charCodeAt(str.length - 1) - 0xAC00) % 28 > 0;
   },
 
-  getSyllable: function(str, option) {
+  getSyllable: function(str, options) {
     if (
-      option !== undefined &&
-      option.removeSpace
+      options !== undefined &&
+      options.removeSpace
     )
       str = str.replace(/(\s*)/g, "");
 
@@ -59,8 +59,8 @@ module.exports = {
         uniChar > 0xD7A3
       ) {
         if (
-          option !== undefined &&
-          option.includeOtherLng
+          options !== undefined &&
+          options.includeOtherLng
         )
           result.push([str[i]]);
         continue;
@@ -69,8 +69,8 @@ module.exports = {
       var choIndex = Math.floor((uniChar - 0xAC00) / (21 * 28));
   
       if (
-        option !== undefined &&
-        ["초성", "cho", "choseong"].includes(option.syllable)
+        options !== undefined &&
+        ["초성", "cho", "choseong"].includes(options.syllable)
       ) {
         result.push(
           (Array.isArray(CHO_SEONG[choIndex]))
@@ -83,8 +83,8 @@ module.exports = {
       var jungIndex = Math.floor(((uniChar - 0xAC00) % (21 * 28)) / 28);
   
       if (
-        option !== undefined &&
-        ["중성", "jung", "jungseong"].includes(option.syllable)
+        options !== undefined &&
+        ["중성", "jung", "jungseong"].includes(options.syllable)
       ) {
         result.push(
           (Array.isArray(JUNG_SEONG[jungIndex]))
@@ -97,8 +97,8 @@ module.exports = {
       var jongIndex = (uniChar - 0xAC00) % 28;
   
       if (
-        option !== undefined &&
-        ["종성", "jong", "jongseong"].includes(option.syllable) &&
+        options !== undefined &&
+        ["종성", "jong", "jongseong"].includes(options.syllable) &&
         jongIndex >= 1
       ) {
         result.push(
@@ -140,8 +140,8 @@ module.exports = {
     }
   
     if (
-      option !== undefined &&
-      option.toSeparateArray
+      options !== undefined &&
+      options.toSeparateArray
     )
       return result.reduce(function(acc, val) {
         return acc.concat(val);
@@ -149,7 +149,7 @@ module.exports = {
     return result;
   },
 
-  getAssembles: function (str, option) {
+  getAssembles: function (str, options) {
     if (!Array.isArray(str))
       throw new Error("getCombined()의 첫 번째 매개변수는 string[]　형식이어야 합니다.");
 
@@ -206,8 +206,8 @@ module.exports = {
         )
       ) {
         if (
-          option !== undefined &&
-          option.includeOtherLng
+          options !== undefined &&
+          options.includeOtherLng
         )
           result.push(str[i]);
         continue;
@@ -381,6 +381,11 @@ module.exports = {
 
       continue;
     }
+    if (
+      options !== undefined &&
+      options.toString
+    )
+      return result.join("");
 
     return result;
   },

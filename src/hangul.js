@@ -1,10 +1,10 @@
 const { getSyllable } = require("./syllable");
 
 module.exports = {
-  isHangul: function (str, option) {
+  isHangul: function (str, options) {
     if (
-      option !== undefined &&
-      option.removeSpace
+      options !== undefined &&
+      options.removeSpace
     )
       str = str.replace(/(\s*)/g, "");
       
@@ -14,8 +14,8 @@ module.exports = {
       var uniChar = str.charCodeAt(i);
 
       if (
-        option !== undefined &&
-        option.onlyCombined
+        options !== undefined &&
+        options.onlyCombined
       )
         result.push(
           uniChar >= 0xAC00 &&
@@ -39,14 +39,14 @@ module.exports = {
     }
 
     if (
-      option !== undefined &&
-      option.percent
+      options !== undefined &&
+      options.percent
     )
       return (result.filter((r) => r).length / str.length) * 100;
     
     if (
-      option !== undefined &&
-      option.toArray
+      options !== undefined &&
+      options.toArray
     )
       return result;
 
@@ -87,7 +87,7 @@ module.exports = {
     return result;
   },
 
-  isChoAble: function (str, option) {
+  isChoAble: function (str, options) {
     var result = [];
 
     for (var i = 0; i < str.length; i++)
@@ -102,15 +102,15 @@ module.exports = {
       );
 
     if (
-      option !== undefined &&
-      option.toArray
+      options !== undefined &&
+      options.toArray
     )
       return result;
 
     return result.filter((r) => r).length === str.length;
   },
 
-  isJungAble: function (str, option) {
+  isJungAble: function (str, options) {
     var result = [];
 
     for (var i = 0; i < str.length; i++)
@@ -126,15 +126,15 @@ module.exports = {
       );
 
     if (
-      option !== undefined &&
-      option.toArray
+      options !== undefined &&
+      options.toArray
     )
       return result;
 
     return result.filter((r) => r).length === str.length;
   },
 
-  isJongAble: function (str, option) {
+  isJongAble: function (str, options) {
     var result = [];
 
     for (var i = 0; i < str.length; i++)
@@ -151,11 +151,70 @@ module.exports = {
       );
 
     if (
-      option !== undefined &&
-      option.toArray
+      options !== undefined &&
+      options.toArray
     )
       return result;
 
     return result.filter((r) => r).length === str.length;
-  }
+  },
+
+  isConsonant: function (str, options) {
+    var result = [];
+
+    for (var i = 0; i < str.length; i++)
+      result.push(
+        [
+          "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ",
+          "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ",
+          "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ",
+          "ㅋ", "ㅌ", "ㅍ", "ㅎ",
+        ]
+          .includes(str[i])
+      );
+
+    if (
+      options !== undefined &&
+      options.percent
+    )
+      return (result.filter((r) => r).length / str.length) * 100;
+    
+    if (
+      options !== undefined &&
+      options.toArray
+    )
+      return result;
+
+    return result.filter((r) => r).length === str.length;
+  },
+
+  isVowel: function (str, options) {
+    var result = [];
+
+    for (var i = 0; i < str.length; i++)
+      result.push(
+        [
+          "ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ",
+          "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ",
+          "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ",
+          "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ",
+          "ㅣ",
+        ]
+          .includes(str[i])
+      );
+
+    if (
+      options !== undefined &&
+      options.percent
+    )
+      return (result.filter((r) => r).length / str.length) * 100;
+    
+    if (
+      options !== undefined &&
+      options.toArray
+    )
+      return result;
+
+    return result.filter((r) => r).length === str.length;
+  },
 }

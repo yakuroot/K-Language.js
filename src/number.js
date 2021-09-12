@@ -1,5 +1,5 @@
 module.exports = {
-  getKoreanNumber: function (num, option) {
+  getKoreanNumber: function (num, options) {
     var slicedNumbers = [];
 
     var digits;
@@ -51,8 +51,8 @@ module.exports = {
 
             if (n === 1 && index < 2) {
               if (
-                option !== undefined &&
-                option.markOne
+                options !== undefined &&
+                options.markOne
               )
                 return `일${digitsName}`;
               else
@@ -61,8 +61,8 @@ module.exports = {
 
             if (
               index === 2 &&
-              option !== undefined &&
-              option.numeral &&
+              options !== undefined &&
+              options.numeral &&
               i === slicedNumbers.length - 1
             )
               return getUnderHundred(n);
@@ -90,8 +90,8 @@ module.exports = {
 
     function getUnderTen(num, toKorean) {
       if (
-        option !== undefined &&
-        option.numeral &&
+        options !== undefined &&
+        options.numeral &&
         toKorean
       ) {
         if (num === 0) return "영";
@@ -146,16 +146,16 @@ module.exports = {
     }
 
     if (
-      option !== undefined &&
-      option.removeSpace
+      options !== undefined &&
+      options.removeSpace
     )
       result = result.map(function (str) { return str.replace(/(\s*)/g, ""); })
 
     if (
-      option !== undefined &&
-      option.toString
+      options !== undefined &&
+      options.toString
     )
-      return result.join((option.removeSpace) ? "" : " ");
+      return result.join((options.removeSpace) ? "" : " ");
 
     return result;
   },
