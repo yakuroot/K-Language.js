@@ -6,14 +6,16 @@ const {
 } = require("./src/syllable");
 const {
   isHangul,
-  search,
-  searchIndex,
   isChoAble,
   isJungAble,
   isJongAble,
   isConsonant,
   isVowel,
 } = require("./src/hangul");
+const {
+  search,
+  searchIndex,
+} = require("./src/search");
 const { getKoreanNumber } = require("./src/number");
 
 
