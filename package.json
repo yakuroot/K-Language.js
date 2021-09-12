@@ -1,9 +1,12 @@
 {
-  "name": "K-Language.js",
+  "name": "k-language.js",
   "description": "한글을 간편하게 다룰 수 있도록 도와주는 자바스크립트 / 타입스크립트 라이브러리",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Neoration/K-Language.js.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Neoration/K-Language.js.git"
+  },
   "author": "Neo <65282986+Neoration@users.noreply.github.com>",
   "license": "MIT",
   "types": "./index.d.ts",
