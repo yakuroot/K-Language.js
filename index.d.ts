@@ -3,17 +3,13 @@ export type JosaTypes =
   `으${"" | "/" | ","}로` | `은${"" | "/" | ","}는` | `야${"" | "/" | ","}아` |
   `이${"나" | "란" | "든가" | "든지" | "나마" | "네"}`;
 
-declare interface Josa {
-  josa: (target: string, postposition: JosaTypes, options?: { preserve: boolean }) => string;
-}
-
 export type SyllableTypes = `${"초" | "중" | "종"}성` | "모두" | `${"cho" | "jung" | "jong"}${"seong" | ""}` | "all";
 
 export interface SyllableOptions {
   syllable?: SyllableTypes;
   includeOtherLng?: boolean;
   removeSpace?: boolean;
-};
+}
 
 declare interface HasJongSeong {
   hasJongSeong: (str: string) => boolean;
@@ -67,9 +63,9 @@ declare interface IsConsonant {
 }
 
 declare interface IsVowel {
-  isConsonant: (str: string) => boolean;
-  isConsonant: (str: string, options: { percent: true }) => number;
-  isConsonant: (str: string, options: { toArray: true }) => boolean[];
+  isVowel: (str: string) => boolean;
+  isVowel: (str: string, options: { percent: true }) => number;
+  isVowel: (str: string, options: { toArray: true }) => boolean[];
 }
 
 export interface KoreanNumberOptions {
@@ -79,11 +75,11 @@ export interface KoreanNumberOptions {
 }
 
 declare interface GetKoreanNumber {
-  getKoreanNumber: (num: number, options?: HangulOptions) => string[];
-  getKoreanNumber: (num: number, options?: HangulOptions & { toString: true }) => string;
+  getKoreanNumber: (num: number, options?: KoreanNumberOptions) => string[];
+  getKoreanNumber: (num: number, options?: KoreanNumberOptions & { toString: true }) => string;
 }
 
-declare const josa: Josa;
+declare const josa: (target: string, postposition: JosaTypes, options?: { preserve: boolean }) => string;
 declare const hasJongSeong: HasJongSeong;
 declare const getSyllable: GetSyllable;
 declare const getAssembles: GetAssembles;
@@ -101,25 +97,25 @@ declare const isVowel: IsVowel;
 
 declare const getKoreanNumber: GetKoreanNumber;
 
-
-
-export default {
-  josa,
-
-  hasJongSeong,
-  getSyllable,
-  getAssembles,
-
-  isHangul,
-  search,
-  searchIndex,
-
-  isChoAble,
-  isJungAble,
-  isJongAble,
-
-  isConsonant,
-  isVowel,
-
-  getKoreanNumber,
-};
+declare module 'K-Language.js' {
+  export = {
+    josa,
+  
+    hasJongSeong,
+    getSyllable,
+    getAssembles,
+  
+    isHangul,
+    search,
+    searchIndex,
+  
+    isChoAble,
+    isJungAble,
+    isJongAble,
+  
+    isConsonant,
+    isVowel,
+  
+    getKoreanNumber,
+  };
+}
