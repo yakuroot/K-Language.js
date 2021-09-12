@@ -12,13 +12,13 @@ export interface SyllableOptions {
 }
 
 declare interface HasJongSeong {
-  hasJongSeong: (str: string) => boolean;
-  hasJongSeong: (str: string, options?: { toArray: true }) => boolean[];
+  hasJongSeong(str: string): boolean;
+  hasJongSeong(str: string, options?: { toArray: true }): boolean[];
 }
 
 declare interface GetSyllable {
-  getSyllable: (str: string, options?: SyllableOptions) => string[][];
-  getSyllable: (str: string, options?: SyllableOptions & { toSeparateArray: true }) => string[];
+  getSyllable(str: string, options?: SyllableOptions): string[][];
+  getSyllable(str: string, options?: SyllableOptions & { toSeparateArray: true }): string[];
 }
 
 export interface AssemblesOptions {
@@ -26,8 +26,8 @@ export interface AssemblesOptions {
 }
 
 declare interface GetAssembles {
-  getAssembles: (str: string[], options?: AssemblesOptions) => string[];
-  getAssembles: (str: string[], options?: AssemblesOptions & { toString: true }) => string;
+  getAssembles(str: string[], options?: AssemblesOptions): string[];
+  getAssembles(str: string[], options?: AssemblesOptions & { toString: true }): string;
 }
 
 export interface HangulOptions {
@@ -36,36 +36,36 @@ export interface HangulOptions {
 }
 
 declare interface IsHangul {
-  isHangul: (str: string, options?: HangulOptions) => boolean;
-  isHangul: (str: string, options?: HangulOptions & { percent: true }) => number;
-  isHangul: (str: string, options?: HangulOptions & { toArray: true }) => boolean[];
+  isHangul(str: string, options?: HangulOptions): boolean;
+  isHangul(str: string, options?: HangulOptions & { percent: true }): number;
+  isHangul(str: string, options?: HangulOptions & { toArray: true }): boolean[];
 }
 
 declare interface IsChoAble {
-  isChoAble: (str: string) => boolean;
-  isChoAble: (str: string, options: { toArray: true }) => boolean[];
+  isChoAble(str: string): boolean;
+  isChoAble(str: string, options: { toArray: true }): boolean[];
 }
 
 declare interface IsJungAble {
-  isJungAble: (str: string) => boolean;
-  isJungAble: (str: string, options: { toArray: true }) => boolean[];
+  isJungAble(str: string): boolean;
+  isJungAble(str: string, options: { toArray: true }): boolean[];
 }
 
 declare interface IsJongAble {
-  isJongAble: (str: string) => boolean;
-  isJongAble: (str: string, options: { toArray: true }) => boolean[];
+  isJongAble(str: string): boolean;
+  isJongAble(str: string, options: { toArray: true }): boolean[];
 }
 
 declare interface IsConsonant {
-  isConsonant: (str: string) => boolean;
-  isConsonant: (str: string, options: { percent: true }) => number;
-  isConsonant: (str: string, options: { toArray: true }) => boolean[];
+  isConsonant(str: string): boolean;
+  isConsonant(str: string, options: { percent: true }): number;
+  isConsonant(str: string, options: { toArray: true }): boolean[];
 }
 
 declare interface IsVowel {
-  isVowel: (str: string) => boolean;
-  isVowel: (str: string, options: { percent: true }) => number;
-  isVowel: (str: string, options: { toArray: true }) => boolean[];
+  isVowel(str: string): boolean;
+  isVowel(str: string, options: { percent: true }): number;
+  isVowel(str: string, options: { toArray: true }): boolean[];
 }
 
 export interface KoreanNumberOptions {
@@ -75,8 +75,8 @@ export interface KoreanNumberOptions {
 }
 
 declare interface GetKoreanNumber {
-  getKoreanNumber: (num: number, options?: KoreanNumberOptions) => string[];
-  getKoreanNumber: (num: number, options?: KoreanNumberOptions & { toString: true }) => string;
+  getKoreanNumber(num: number, options?: KoreanNumberOptions): string[];
+  getKoreanNumber(num: number, options?: KoreanNumberOptions & { toString: true }): string;
 }
 
 declare const josa: (target: string, postposition: JosaTypes, options?: { preserve: boolean }) => string;
