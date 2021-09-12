@@ -1,5 +1,6 @@
 {
   "name": "K-Language.js",
+  "description": "한글을 간편하게 다룰 수 있도록 도와주는 자바스크립트 / 타입스크립트 라이브러리",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Neoration/K-Language.js.git",
