@@ -16,6 +16,7 @@ const {
 } = require("./src/hangul");
 const { getKoreanNumber } = require("./src/number");
 
+
 if (typeof define === "function" && define.amd) {
   define(function () {
     return {
@@ -67,4 +68,3 @@ if (typeof define === "function" && define.amd) {
     getKoreanNumber,
   };
 }
-
