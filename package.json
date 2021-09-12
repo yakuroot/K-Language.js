@@ -6,5 +6,21 @@
   "repository": "https://github.com/Neoration/K-Language.js.git",
   "author": "Neo <65282986+Neoration@users.noreply.github.com>",
   "license": "MIT",
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "homepage": "https://github.com/Neoration/K-Language.js",
+  "bugs": {
+    "url": "https://github.com/Neoration/K-Language.js/issues",
+    "email": "neo@neoration.me"
+  },
+  "keywords": [
+    "korean",
+    "hangle",
+    "hangul",
+    "한글",
+    "한국어",
+    "node",
+    "nodejs",
+    "ts",
+    "typescript"
+  ]
 }
