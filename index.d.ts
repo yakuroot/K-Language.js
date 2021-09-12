@@ -69,6 +69,6 @@ declare interface K_Lng {
 
 declare const klng: K_Lng;
 
-declare module 'K-Language.js' {
+declare module 'k-language.js' {
   export = klng;
 }
